@@ -4,28 +4,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CipherMaster</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      padding: 1.5rem 2rem;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    p.subtitle {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #3498db;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>🔐 CipherMaster</h1>
-  <p>A powerful multi-cipher encryption and decryption tool.</p>
+  <header>
+    <h1>CipherMaster</h1>
+    <p class="subtitle">An all-in-one tool to encrypt, decrypt, and explore classic ciphers.</p>
+  </header>
 
-  <h2>Download</h2>
-  <p><a href="https://example.com/download">Click here to download the Windows version</a></p>
+  <main>
+    <div class="card">
+      <h2>Windows Download</h2>
+      <p class="tagline">For Windows 10 and above. No setup required.</p>
+      <a href="path/to/CipherMaster_Windows.exe" class="btn">Download for Windows</a>
+    </div>
 
-  <h2>Cross-Platform Instructions</h2>
-  <pre>
-To use CipherMaster on platforms other than Windows:
-1. Install Python 3: https://www.python.org/downloads/
-2. Run: pip install pyperclip
-3. [Linux Only]
-   - Debian/Ubuntu: sudo apt install xclip
-   - Fedora: sudo dnf install xclip
-4. Launch: python CipherMaster.py
-  </pre>
+    <div class="card">
+      <h2>Unix Download</h2>
+      <p class="tagline">Compatible with Linux and macOS. Requires Python 3.</p>
+      <a href="path/to/CipherMaster_Unix.zip" class="btn">Download for Unix</a>
+    </div>
+
+    <div class="card">
+      <h2>Full Project</h2>
+      <p class="tagline">Get the full Python project to explore or remix it yourself.</p>
+      <a href="path/to/CipherMaster_Full.zip" class="btn">Download Full Project</a>
+    </div>
+  </main>
 
   <footer>
-    <p>© 2025 Morris Belaquavre — Open Source on <a href="https://github.com/YourUsername/CipherMaster">GitHub</a></p>
+    Made with 🧠 and ☕ by Morris • CipherMaster V0.0.0
   </footer>
 </body>
 </html>
