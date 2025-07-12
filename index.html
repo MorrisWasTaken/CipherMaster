@@ -6,98 +6,121 @@
   <title>CipherMaster</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-    }
-    header {
-      background-color: #2c3e50;
-      padding: 1.5rem 2rem;
-      color: white;
-      text-align: center;
-    }
-    h1 {
       margin: 0;
-      font-size: 2.2rem;
+      background: #111;
+      color: #eee;
     }
-    p.subtitle {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      padding: 2rem;
-      margin-bottom: 2rem;
+
+    header {
+      background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+      padding: 2rem 1rem;
       text-align: center;
     }
-    .card h2 {
+
+    header img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #7cfad0;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    .downloads {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem auto;
+      gap: 1.2rem;
+      max-width: 400px;
+    }
+
+    .download-link {
+      display: block;
+      background-color: #202020;
+      border: 1px solid #444;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      color: #7cfad0;
+      font-weight: bold;
+      transition: 0.2s;
+      width: 100%;
+    }
+
+    .download-link:hover {
+      background-color: #2c2c2c;
+      border-color: #7cfad0;
+      transform: scale(1.02);
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .description {
+      margin-top: 3rem;
+      background: #181818;
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid #333;
+      line-height: 1.6;
+    }
+
+    .description h2 {
+      color: #7cfad0;
       margin-top: 0;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #3498db;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background-color: #2980b9;
-    }
+
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 1rem;
       font-size: 0.9rem;
-      color: #888;
-    }
-    .tagline {
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      color: #555;
+      color: #666;
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="logo.png" alt="CipherMaster Logo" />
     <h1>CipherMaster</h1>
-    <p class="subtitle">An all-in-one tool to encrypt, decrypt, and explore classic ciphers.</p>
+    <p>An all-in-one tool to encrypt and decrypt ciphers.</p>
   </header>
 
-  <main>
-    <div class="card">
-      <h2>Windows Download</h2>
-      <p class="tagline">For Windows 10 and above. No setup required.</p>
-      <a href="path/to/CipherMaster_Windows.exe" class="btn">Download for Windows</a>
+  <div class="container">
+    <div class="downloads">
+      <a class="download-link" href="downloads/CipherMaster-Windows.exe" download>⬇ Download for Windows</a>
+      <a class="download-link" href="downloads/CipherMaster-Unix.zip" download>⬇ Download for Unix (Linux & Mac)</a>
+      <a class="download-link" href="downloads/CipherMaster-FullProject.zip" download>📁 Download Full Project</a>
     </div>
 
-    <div class="card">
-      <h2>Unix Download</h2>
-      <p class="tagline">Compatible with Linux and macOS. Requires Python 3.</p>
-      <a href="path/to/CipherMaster_Unix.zip" class="btn">Download for Unix</a>
+    <div class="description">
+      <h2>About CipherMaster</h2>
+      <p>
+        CipherMaster started as a fun side project to explore how classic encryption techniques like Caesar, ROT13, and Morse code work. Over time, it grew into a fully functional and stylish terminal-based utility with multiple cipher systems, clipboard integration, and even its own unique encoding format.
+      </p>
+      <p>
+        It's designed to be a hands-on learning tool and a quick utility for anyone interested in cryptography—whether you're a beginner learning about ciphers or a developer looking for a compact decoder.
+      </p>
+      <h2>Remixing & Credits</h2>
+      <p>
+        You're welcome to remix or extend CipherMaster! If you do, please make sure to give proper credit. A short note like “Based on CipherMaster by Morris” is all that's needed. I'd love to see what you create.
+      </p>
     </div>
-
-    <div class="card">
-      <h2>Full Project</h2>
-      <p class="tagline">Get the full Python project to explore or remix it yourself.</p>
-      <a href="path/to/CipherMaster_Full.zip" class="btn">Download Full Project</a>
-    </div>
-  </main>
-
-  <footer>
-    Made with 🧠 and ☕ by Morris • CipherMaster V0.0.0
-  </footer>
+  </div>
 </body>
 </html>
