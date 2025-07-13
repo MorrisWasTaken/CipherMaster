@@ -16,7 +16,8 @@ def encrypt(text):
     
     return "".join(fences)
 
-def decrypt(ciphertext, rails):
+def decrypt(ciphertext):
+    rails = int(input("Enter Rails amount: "))
     grid = [[None] * len(ciphertext) for _ in range(rails)]
     row = 0
     direction = 1

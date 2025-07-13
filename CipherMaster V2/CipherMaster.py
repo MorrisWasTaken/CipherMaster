@@ -1,8 +1,13 @@
+ShowLoadingProccess = True
+ShowSkipProccess = True
+ShowErrorProccess = True
+
 import sys
-print(f"Python version: {sys.version}")
-print("initialising CipherMaster...")
-print("done")
-print("loading ciphers...")
+if ShowLoadingProccess:
+    print(f"Python version: {sys.version}")
+    print("initialising CipherMaster...")
+    print("done")
+    print("loading ciphers...")
 
 # ------------------------------------------------------------------------[ MODULES ]------------------------------------------------------------------------ #
 
@@ -25,11 +30,14 @@ for filename in os.listdir(MODULES_DIR):
  
             if all(hasattr(module, attr) for attr in ("name", "command", "info", "encrypt", "decrypt")):
                 ciphers.append(module)
-                print(f"Loaded {filename}")
+                if ShowLoadingProccess:
+                    print(f"Loaded {filename}")
             else:
-                print(f"Skipping {filename}: missing required attributes.")
+                if ShowSkipProccess:
+                    print(f"Skipping {filename}: missing required attributes.")
         except Exception as e:
-            print(f"Error loading {filename}: {e}")
+            if ShowErrorProccess:
+                print(f"Error loading {filename}: {e}")
 print("done")
 
 # ------------------------------------------------------------------------[ VARIABLES ]------------------------------------------------------------------------ #
@@ -60,16 +68,55 @@ def cmds():
 {INFO}Command Name {SEPARATOR}|{INFO} Command Use
 {SEPARATOR}_____________{SEPARATOR}|____________________________________________________
 {INFO}cmds         {SEPARATOR}|{INFO} Displays all Commands
+{INFO}info         {SEPARATOR}|{INFO} Displays Information about the current instalation
 {INFO}exit         {SEPARATOR}|{INFO} Exits the Application
-{INFO}encrypt      {SEPARATOR}|{INFO} Encrypts a message with the chosen cipher
-{INFO}decrypt      {SEPARATOR}|{INFO} Decrypts a message with any supported cipher
+{INFO}encrypt      {SEPARATOR}|{INFO} Encrypts a message with any installed cipher
+{INFO}decrypt      {SEPARATOR}|{INFO} Decrypts a message with any installed cipher
+{INFO}try all      {SEPARATOR}|{INFO} Decrypts a message with every installed cipher
 {RESET}""")
 
-def greet():
+def greet(): # if you are Remixing this project feel free to change this into anything you want but please include function from line 75!
     print(f"""{INFO}
 Welcome to CipherMaster V2!
 Use the "exit" Command to Quit the application and the "cmds" Command to view all Existing Commands
 Your inputs are non Case-Sensitive{RESET}
+""")
+
+def credit():
+    isOriginal = True # change this to false if you are remixing the project
+    if not isOriginal:
+        print(f"""{INFO}This Application is based on "CipherMaster"
+https://morriswastaken.github.io/CipherMaster/
+https://github.com/MorrisWasTaken/CipherMaster""")
+
+def info():
+   print(f"""{PROMPT}
+ ___________________________________________________________________________________________
+|                                               ______________________________________      |
+|                         ###    ###           |App Name: CipherMaster                |     |
+|                         ###    ###           |App Version: 2.0                      |     |
+|       @**************################        |App Developer: MorrisWasTaken (github)|     |
+|      @@**************################         ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾      |
+|     @@**********@@@@@@**###**  ###                                                        |
+|     @@*******@@@@****@@@###*** ###                                                        |
+|    @@******@@@*******################                                                     |
+|   @@@*****@@@********################                                                     |
+|   @@******@@@***********###****###                                                        |
+|  @@*******@@@***********###****###                                                        |
+|  @@*******@@@*********************                                                        |
+| @@********@@@**********************                                                       |
+| @@*********@@@*********************                                                       |
+| @@@@@*********@@@@****@@@@*******@@                                                       |
+|  @@@@@@*********@@@@@@*******#@@@                                                         |
+|    @@@@@@******************@@@@                                                           |
+|      @@@@@@@************#@@@                                                              |
+|         @@@@@@********@@@@                                                                |
+|           @@@@@@@**%@@@                                                                   |
+|              @@@@@@@@                                                                     |
+|                 @@                                                                        |
+|                                                                                           |
+|                                                                                           |
+ ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 """)
 
 def encrypt():
@@ -120,9 +167,25 @@ def decrypt():
 
     print(f"{ERROR}Unknown cipher command '{selected_command}'.{RESET}")
 
+def TryAll(user_input):
+    for mod in ciphers:
+        print(f"{SEPARATOR}-" * 40)
+        print(f"{INFO}{mod.name}:{RESET}")
+        try:
+            result = mod.decrypt(user_input)
+
+            # If it's a list (like Caesar), print each line
+            if isinstance(result, list):
+                for line in result:
+                    print(f"{SUCCESS}{line}{RESET}")
+            else:
+                print(f"{SUCCESS}{result}{RESET}")
+        except Exception as e:
+            print(f"{ERROR}Failed: {e}{RESET}")
 
 # ------------------------------------------------------------------------[ CODE ]------------------------------------------------------------------------ #
 
+credit()
 greet()
 while True:
     command = input(">>> ").lower()
@@ -134,6 +197,13 @@ while True:
         encrypt()
     elif command == "decrypt":
         decrypt()
+    elif command == "info":
+        info()
+    elif command == "try all":
+        print(f"{PROMPT}Input text to try decrypting with all ciphers:{RESET}")
+        text = input(">>> ")
+        TryAll(text)
+
     else:
         print(f'"{command}" {ERROR}is not a known command, use "cmds" to list all commands{RESET}')
 input("Press Enter to exit...")
