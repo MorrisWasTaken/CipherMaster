@@ -4,7 +4,7 @@
   <link rel="icon" href="CipherMaster.ico" type="image/x-icon" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CipherMaster</title>
+  <title>PROJECT_NAME_PLACEHOLDER</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,39 +38,75 @@
       color: #aaa;
     }
 
-    .downloads {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 2rem auto;
-      gap: 1.2rem;
-      max-width: 400px;
-    }
-
-    .download-link {
-      display: block;
-      background-color: #202020;
-      border: 1px solid #444;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      text-decoration: none;
-      color: #7cfad0;
-      font-weight: bold;
-      transition: 0.2s;
-      width: 100%;
-    }
-
-    .download-link:hover {
-      background-color: #2c2c2c;
-      border-color: #7cfad0;
-      transform: scale(1.02);
-    }
-
     .container {
       padding: 2rem 1rem;
       max-width: 800px;
       margin: auto;
+    }
+
+    .dropdown {
+      margin-bottom: 1.5rem;
+    }
+
+    .dropdown label {
+      display: block;
+      font-weight: bold;
+      color: #7cfad0;
+      margin-bottom: 0.3rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 8px;
+      background: #202020;
+      color: #7cfad0;
+      border: 1px solid #444;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      background: #181818;
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid #333;
+      margin-bottom: 1rem;
+    }
+
+    .download-options h3 {
+      margin-top: 0;
+      color: #7cfad0;
+    }
+
+    .download-options ul {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .download-options ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    a.download-link {
+      display: inline-block;
+      background-color: #202020;
+      border: 1px solid #444;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #7cfad0;
+      font-weight: bold;
+      transition: 0.2s;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    a.download-link:hover {
+      background-color: #2c2c2c;
+      border-color: #7cfad0;
+      transform: scale(1.02);
     }
 
     .description {
@@ -93,35 +129,196 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+    .subreddit-link {
+      margin: 2rem auto 3rem;
+      text-align: center;
+    }
+
+    .subreddit-link a {
+      color: #7cfad0;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .subreddit-link a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="CipherMaster.ico" alt="CipherMaster Logo" />
-    <h1>CipherMaster</h1>
-    <p>An all-in-one tool to encrypt and decrypt ciphers.</p>
+    <img src="CipherMaster.ico" alt="PROJECT_LOGO_PLACEHOLDER" />
+    <h1>PROJECT_NAME_PLACEHOLDER</h1>
+    <p>YOUR_SLOGAN_PLACEHOLDER</p>
   </header>
 
   <div class="container">
-    <div class="downloads">
-      <a class="download-link" href="CipherMaster Build.zip" download>🔽 Download for Windows</a>
-      <a class="download-link" href="CipherMaster Unix.zip" download>🔽 Download for Unix (Linux & Mac)</a>
-      <a class="download-link" href="CipherMaster.zip" download>📁 Download Full Project</a>
+
+    <!-- Downloads Dropdown: CipherMaster Modular V2 -->
+    <div class="dropdown">
+      <label for="modular-downloads">CipherMaster Modular (V2)</label>
+      <select id="modular-downloads" onchange="showDownloadOptions('modular', this.value)">
+        <option value="">Select an option...</option>
+        <option value="windows">Download for Windows</option>
+        <option value="unix">Download for Unix (Linux & Mac)</option>
+        <option value="full-project">Download Full Project</option>
+      </select>
+      <div id="modular-downloads-info" class="download-options" style="display:none;">
+        <!-- Content will be populated by JS -->
+      </div>
     </div>
 
+    <!-- Downloads Dropdown: CipherMaster Non-Modular V1 -->
+    <div class="dropdown">
+      <label for="nonmodular-downloads">CipherMaster Non-Modular (V1)</label>
+      <select id="nonmodular-downloads" onchange="showDownloadOptions('nonmodular', this.value)">
+        <option value="">Select an option...</option>
+        <option value="windows">Download for Windows</option>
+        <option value="unix">Download for Unix (Linux & Mac)</option>
+        <option value="full-project">Download Full Project</option>
+      </select>
+      <div id="nonmodular-downloads-info" class="download-options" style="display:none;">
+        <!-- Content will be populated by JS -->
+      </div>
+    </div>
+
+    <!-- Subreddit link -->
+    <div class="subreddit-link">
+      <p>Join the discussion on <a href="https://www.reddit.com/r/CipherMaster/" target="_blank" rel="noopener noreferrer">our subreddit</a>!</p>
+    </div>
+
+    <!-- Featured Modules Dropdown -->
+    <div class="dropdown">
+      <label for="featured-modules">Featured Modules</label>
+      <select id="featured-modules" onchange="showModuleInfo(this.value)">
+        <option value="">Select a module...</option>
+        <!-- Placeholder for modules - add your module names and info here -->
+        <option value="Module">Module 1</option>
+        <option value="Module">Module 2</option>
+        <option value="Module">Module 3</option>
+      </select>
+      <div id="module-info" class="download-options" style="display:none;">
+        <!-- Content will be populated by JS -->
+      </div>
+    </div>
+
+    <!-- Large Description Text -->
     <div class="description">
-      <h2>About CipherMaster</h2>
+      <h2>About PROJECT_NAME_PLACEHOLDER</h2>
       <p>
-        CipherMaster started as a fun side project to explore how encryption techniques like Caesar, ROT13, and Morse code work. Over time, it became a full utility with multiple cipher systems, clipboard integration, and even its own unique encoding format.
+        About CipherMaster
+
+        CipherMaster started as a fun side project to explore how encryption techniques like Caesar, ROT13, and Morse code work. Over time, it became a full utility with multiple cipher systems, clipboard integration, and even its own unique encoding format. It's designed to be a bit Retro and be fully Terminal based because it was never meant to become a full on App.
       </p>
       <p>
-        It's designed to be a bit Retro and be fully Terminal based because it was never meant to become a full on App.
-      </p>
-      <h2>Remixing & Credits</h2>
-      <p>
-        You're more than allowed to remix or extend CipherMaster! If you do, please make sure to give proper credit. A short note like “Based on CipherMaster” is all that's needed.
+      You're more than allowed to remix or extend CipherMaster! If you do, please make sure to give proper credit. A short note like “Based on CipherMaster” is all that's needed.
       </p>
     </div>
+
   </div>
+
+  <footer>
+    &copy; Made by MorrisWasTaken on Github
+  </footer>
+
+  <script>
+    // Replace these URLs with your actual download links
+    const downloads = {
+      modular: {
+        windows: {
+          link: "CipherMaster V2 Windows.zip", // <-- CHANGE this file path
+          text: "Modular version for Windows users.",
+          pros: ["Modular design", "Easier to extend", "Executable comes pre-Built"],
+          cons: ["larger Filesize"]
+        },
+        unix: {
+          link: "CipherMaster V2 Unix.zip", // <-- CHANGE this file path
+          text: "Modular version for Unix (Linux & Mac).",
+          pros: ["Modular design", "Cross-platform"],
+          cons: ["Must be Built Manually", "larger Filesize"]
+        },
+        "full-project": {
+          link: "CipherMaster V2.zip", // <-- CHANGE this file path
+          text: "Complete modular project source code.",
+          pros: ["Full source access", "Customizable"],
+          cons: ["Needs Python knowledge"]
+        }
+      },
+      nonmodular: {
+        windows: {
+          link: "CipherMaster Build.zip", // <-- CHANGE this file path
+          text: "Non-modular version for Windows users.",
+          pros: ["Simple to use", "Standalone executable", "Executable comes pre-Built", "Smaller Filesize"],
+          cons: ["Harder to extend", "No more Updates"]
+        },
+        unix: {
+          link: "CipherMaster Unix.zip", // <-- CHANGE this file path
+          text: "Non-modular version for Unix (Linux & Mac).",
+          pros: ["Simple to use", "Standalone executable", "Executable comes pre-Built", "Smaller Filesize"],
+          cons: ["Harder to extend", "No more Updates", "Requires Manual Building"]
+        },
+        "full-project": {
+          link: "CipherMaster.zip", // <-- CHANGE this file path
+          text: "Complete non-modular project source code.",
+          pros: ["Easy to run", "No extra setup"],
+          cons: ["No modularity", "Requires Python knowledge"]
+        }
+      }
+    };
+
+    // Module info placeholder data
+    const modules = {
+      module1: {
+        title: "None",
+        description: "None, but yours could be here... if you share it in our subreddit!"
+      },
+      module2: {
+        title: "None",
+        description: "None, but yours could be here... if you share it in our subreddit!"
+      },
+      module3: {
+        title: "None",
+        description: "None, but yours could be here... if you share it in our subreddit!"
+      }
+    };
+
+    function showDownloadOptions(type, option) {
+      if (!option) {
+        document.getElementById(type + "-downloads-info").style.display = "none";
+        return;
+      }
+      const infoDiv = document.getElementById(type + "-downloads-info");
+      const data = downloads[type][option];
+      infoDiv.innerHTML = `
+        <p>${data.text}</p>
+        <p>
+          <a href="${data.link}" download class="download-link">Download</a>
+        </p>
+        <p><strong>Pros:</strong></p>
+        <ul>${data.pros.map(item => `<li>${item}</li>`).join('')}</ul>
+        <p><strong>Cons:</strong></p>
+        <ul>${data.cons.map(item => `<li>${item}</li>`).join('')}</ul>
+      `;
+      infoDiv.style.display = "block";
+    }
+
+    function showModuleInfo(moduleKey) {
+      const infoDiv = document.getElementById("module-info");
+      if (!moduleKey) {
+        infoDiv.style.display = "none";
+        infoDiv.innerHTML = "";
+        return;
+      }
+      const mod = modules[moduleKey];
+      infoDiv.innerHTML = `
+        <h3>${mod.title}</h3>
+        <p>${mod.description}</p>
+      `;
+      infoDiv.style.display = "block";
+    }
+  </script>
+
 </body>
 </html>
